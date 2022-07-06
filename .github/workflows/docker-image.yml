@@ -2,17 +2,10 @@ name: docker-image-ci
 
 on:
   push:
-    branches:
-      - main
-      - '!ethereum:master'
-      - '!main2'
-  pull_request:
-    branches:
-      - main
-      - '!ethereum:master'
-      - '!main2'
-    types:
-      - closed
+    branches-ignore:
+      - master
+      - 'ethereum:master'
+      - main2
 
 jobs:
   push-image:
