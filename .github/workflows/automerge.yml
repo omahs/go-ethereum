@@ -8,18 +8,6 @@ on:
       - master
       - 'ethereum:master'
 
-  pull_request_target:
-    types:
-      - opened
-      - labeled
-
-  # Try enabling auto-merge for the specified pull request or all open pull requests if none is specified.
-  workflow_dispatch:
-    inputs:
-      pull-request:
-        description: Pull Request Number
-        required: false
-
 jobs:
   automerge:
     runs-on: ubuntu-latest
@@ -30,5 +18,4 @@ jobs:
           merge-method: rebase
           do-not-merge-labels: never-merge
           required-labels: ":arrow_heading_down: pull"
-          pull-request: ${{ github.event.inputs.pull-request }}
           dry-run: false
