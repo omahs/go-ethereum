@@ -1,0 +1,34 @@
+name: Automerge
+
+on:
+  # Try enabling auto-merge for all open pull requests. (Only recommended for testing.)
+  push:
+    branches-ignore:
+      - master
+      - 'ethereum:master'
+
+  pull_request_target:
+    types:
+      - opened
+      - labeled
+
+  # Try enabling auto-merge for the specified pull request or all open pull requests if none is specified.
+  workflow_dispatch:
+    inputs:
+      pull-request:
+        description: Pull Request Number
+        required: false
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: reitermarkus/automerge@v2
+        with:
+          token: ${{ secrets.AARON_GITHUB_TOKEN }}
+          merge-method: rebase
+          do-not-merge-labels: never-merge
+          required-labels:
+            - ":arrow_heading_down: pull"
+          pull-request: ${{ github.event.inputs.pull-request }}
+          dry-run: true
