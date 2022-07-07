@@ -31,4 +31,4 @@ jobs:
           required-labels:
             - ":arrow_heading_down: pull"
           pull-request: ${{ github.event.inputs.pull-request }}
-          dry-run: true
+          dry-run: false
