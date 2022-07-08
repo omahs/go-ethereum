@@ -5,7 +5,6 @@ conflictLabel: "merge-conflict"     # Optional, on merge conflict assign a custo
 rules:                      # Array of rules
   - base: main            # Required. Target branch
     upstream: ethereum:master    # Required. Must be in the same fork network.
-    upstream: master
     mergeMethod: rebase  # Optional, one of [none, merge, squash, rebase, hardreset], Default: none.
     mergeUnstable: false    # Optional, merge pull request even when the mergeable_state is not clean. Default: false
     assignees:              # Optional
