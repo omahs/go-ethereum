@@ -136,7 +136,7 @@ keystore and connecting to the Goerli testnet:
 clef --keystore /my/keystore --chainid 5
 ```
 
-On starting Clef, the following welcome messgae is displayed in the terminal:
+On starting Clef, the following welcome message is displayed in the terminal:
 
 ```terminal
 WARNING!
