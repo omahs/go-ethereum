@@ -55,17 +55,17 @@
 
 ## <span id="bsp_intro">Introduction</span>
 
-Essential to the Covalent Network is the Block Specimen and the Block Specimen Producer (BSP), a bulk export method that ultimately leads to the generation of a canonical representation of a blockchains historical state. Currently implemented on existing blockchain clients running Geth. It functions currently as an -
+Essential to the Covalent Network is the Block Specimen and the Block Specimen Producer (BSP), a bulk export method that ultimately leads to the generation of a canonical representation of a blockchain's historical state. Currently implemented on existing blockchain clients running Geth. It functions currently as an -
 
 1. Blockchain data extractor
 1. Blockchain data normalizer
 
-What is ultimately created is a ‘Block Specimen’, a universal canonical representation of a blockchains historical state.
+What is ultimately created is a ‘Block Specimen’, a universal canonical representation of a blockchain's historical state.
 
 There are two further considerations regarding the Block Specimen.
 
 1. The BSP is completely standalone on forks of Geth.
-1. The separation of data storage layer from the block execution and distributed consensus functionality leads to better segregation and upgrades of functionality in the blockhain data processing pipeline.
+1. The separation of data storage layer from the block execution and distributed consensus functionality leads to better segregation and upgrades of functionality in the blockchain data processing pipeline.
 
 As a result, anyone can run full tracing on the block specimen and accurately recreate the blockchain without access to a blockchain client software.
 
@@ -99,7 +99,7 @@ One common method of reading data from Ethereum for example is the JSON RPC Laye
 
 - **Expensive**: To access historical data at any point in time, you need to run your blockchain clients in a mode known as “full archive nodes” - which requires specialized and expensive hardware to scale.
 
-- **The Purge:** For Ethereum specifically, Vitalik recently outlined an updated roadmap for its development which included a phase titled ‘The Purge’. Once this phase is implemented, clients will no longer store historical data older than a year. Hence, alternatives will be needed to access Ethereums full historical state.
+- **The Purge:** For Ethereum specifically, Vitalik recently outlined an updated roadmap for its development which included a phase titled ‘The Purge’. Once this phase is implemented, clients will no longer store historical data older than a year. Hence, alternatives will be needed to access Ethereum's full historical state.
 
 Meanwhile, data mappers and static dashboards are great for examining specific metrics and small tables (so long as the smart contract is decoded) but lack flexibility and scalability. Our belief is that -
 
@@ -129,7 +129,7 @@ Of course, operators who successfully perform this role will be compensated in C
 
 Please install [docker and docker-compose](https://docs.docker.com/compose/install/).
 
-Employ `docker-compose` to get all the necessary services along with BSP Geth to also get running along side it. With `docker-compose` BSP Geth creates block-specimens that are extracted Live for Ethereum Mainnet, pushes them to the Redis stream queue, the BSP Agent service then reads the RLP block-specimens and processes the messages from the redis stream and stores/uploads them according to the configuration given to it. The BSP Agent makes statements about the block-specimens by writing to a proxy proof-chain smart contract that is deployed on a test ganache blockchain i.e the proving aspects happen locally and not on a public blockchain. The Specimens stored locally or uploaded to google cloud storage however retain full validity (if the BSP Geth / Agent source code is not altered.) Add an .env file (if needed) to accomodate the env vars.
+Employ `docker-compose` to get all the necessary services along with BSP Geth to also get running alongside it. With `docker-compose` BSP Geth creates block-specimens that are extracted Live for Ethereum Mainnet, pushes them to the Redis stream queue, the BSP Agent service then reads the RLP block-specimens and processes the messages from the redis stream and stores/uploads them according to the configuration given to it. The BSP Agent makes statements about the block-specimens by writing to a proxy proof-chain smart contract that is deployed on a test ganache blockchain i.e the proving aspects happen locally and not on a public blockchain. The Specimens stored locally or uploaded to google cloud storage however retain full validity (if the BSP Geth / Agent source code is not altered.) Add an .env file (if needed) to accommodate the env vars.
 
 In the future, for the BSP Agent the flags `--eth-client` pointing to a Mainnet ethereum client & `--proof-chain-address` pointing to the correct version of the deployed proofing contract along with the an `.env` file with `ETH_PRIVATE_KEY` var will have to be updated to run entirely for CQT Mainnet.
 These changes can also be directly adapted into the docker-compose.yml file in this directory.
